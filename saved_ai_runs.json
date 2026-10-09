@@ -1,0 +1,546 @@
+[
+  {
+    "run_id": "d7cd005b9b69429daea66d95431a2242",
+    "created_at": "2026-10-09T04:59:33.089534+00:00",
+    "dataset": "synthetic_demo",
+    "model": "qwen3:8b",
+    "test_id": "DEMO-T01",
+    "test_snapshot": {
+      "test_id": "DEMO-T01",
+      "title": "Unknown subscriber attach",
+      "scenario": "unknown_subscriber",
+      "steps": [
+        "Send an attach request with an unknown valid-format identity."
+      ],
+      "expected_result": "Attach is rejected.",
+      "expected_event": "attach_rejected",
+      "max_seconds": null,
+      "source": "synthetic_testcases.json#DEMO-T01"
+    },
+    "requirement_corpus_snapshot": [
+      {
+        "requirement_id": "DEMO-R01",
+        "text": "An attach request using an unknown, correctly formed subscriber identity shall be rejected within 2 seconds.",
+        "scenario": "unknown_subscriber",
+        "test_kind": "negative",
+        "expected_event": "attach_rejected",
+        "max_seconds": "2",
+        "source": "synthetic_requirements.json#DEMO-R01"
+      },
+      {
+        "requirement_id": "DEMO-R02",
+        "text": "An attach request using a malformed subscriber identity shall be rejected within 2 seconds.",
+        "scenario": "malformed_subscriber",
+        "test_kind": "negative",
+        "expected_event": "attach_rejected",
+        "max_seconds": "2",
+        "source": "synthetic_requirements.json#DEMO-R02"
+      },
+      {
+        "requirement_id": "DEMO-R03",
+        "text": "An authorised subscriber requesting an allowed APN shall receive session establishment within 5 seconds.",
+        "scenario": "allowed_apn",
+        "test_kind": "positive",
+        "expected_event": "session_established",
+        "max_seconds": "5",
+        "source": "synthetic_requirements.json#DEMO-R03"
+      },
+      {
+        "requirement_id": "DEMO-R04",
+        "text": "A request for a disallowed APN shall be rejected within 2 seconds.",
+        "scenario": "disallowed_apn",
+        "test_kind": "negative",
+        "expected_event": "session_rejected",
+        "max_seconds": "2",
+        "source": "synthetic_requirements.json#DEMO-R04"
+      }
+    ],
+    "query": "Unknown subscriber attach\nSend an attach request with an unknown valid-format identity.\nAttach is rejected.",
+    "top_k": 3,
+    "status": "completed_with_quality_flags",
+    "human_review_status": "pending",
+    "candidates": [
+      {
+        "requirement_id": "DEMO-R01",
+        "requirement_text": "An attach request using an unknown, correctly formed subscriber identity shall be rejected within 2 seconds.",
+        "source": "synthetic_requirements.json#DEMO-R01",
+        "retrieval_score": 0.700276,
+        "mapping_status": "candidate_only"
+      },
+      {
+        "requirement_id": "DEMO-R02",
+        "requirement_text": "An attach request using a malformed subscriber identity shall be rejected within 2 seconds.",
+        "source": "synthetic_requirements.json#DEMO-R02",
+        "retrieval_score": 0.548865,
+        "mapping_status": "candidate_only"
+      },
+      {
+        "requirement_id": "DEMO-R04",
+        "requirement_text": "A request for a disallowed APN shall be rejected within 2 seconds.",
+        "source": "synthetic_requirements.json#DEMO-R04",
+        "retrieval_score": 0.162194,
+        "mapping_status": "candidate_only"
+      }
+    ],
+    "generator": {
+      "proposal": {
+        "decision": "candidate_link",
+        "requirement_id": "DEMO-R01",
+        "requirement_quote": "An attach request using an unknown, correctly formed subscriber identity shall be rejected within 2 seconds.",
+        "test_quote": "Send an attach request with an unknown valid-format identity.",
+        "reason": "The test scenario matches the requirement's focus on rejecting an unknown, correctly formed identity. The timing is not enforced here, but the scenario aligns."
+      },
+      "source_check_errors": [],
+      "elapsed_seconds": 40.31,
+      "review_status": "pending"
+    },
+    "critic": {
+      "critic": {
+        "link_assessment": "unsupported",
+        "reason": "The test scenario does not enforce the 2-second timing requirement from the requirement. The requirement explicitly states the timing constraint, but the test does not mention or enforce it.",
+        "findings": [
+          {
+            "category": "missing_timing",
+            "requirement_quote": "An attach request using an unknown, correctly formed subscriber identity shall be rejected within 2 seconds.",
+            "test_quote": "Send an attach request with an unknown valid-format identity.",
+            "explanation": "The requirement specifies a 2-second rejection time, but the test does not mention or enforce this timing constraint."
+          }
+        ]
+      },
+      "source_check_errors": [],
+      "elapsed_seconds": 44.57,
+      "input_snapshot": {
+        "requirement": {
+          "requirement_id": "DEMO-R01",
+          "text": "An attach request using an unknown, correctly formed subscriber identity shall be rejected within 2 seconds."
+        },
+        "test": {
+          "test_id": "DEMO-T01",
+          "title": "Unknown subscriber attach",
+          "steps": [
+            "Send an attach request with an unknown valid-format identity."
+          ],
+          "expected_result": "Attach is rejected."
+        },
+        "proposal": {
+          "decision": "candidate_link",
+          "requirement_id": "DEMO-R01",
+          "requirement_quote": "An attach request using an unknown, correctly formed subscriber identity shall be rejected within 2 seconds.",
+          "test_quote": "Send an attach request with an unknown valid-format identity.",
+          "reason": "The test scenario matches the requirement's focus on rejecting an unknown, correctly formed identity. The timing is not enforced here, but the scenario aligns."
+        }
+      },
+      "review_status": "pending"
+    },
+    "timing_check": {
+      "status": "MISSING_TIMING",
+      "category": "missing_timing",
+      "requirement_seconds": "2",
+      "test_seconds": null,
+      "scope": "criteria comparison conditional on proposed link"
+    },
+    "quality_flags": [
+      {
+        "type": "TIMING_QUOTE_OUTSIDE_EXPECTED_RESULT",
+        "detail": "Timing finding quotes outside expected result."
+      }
+    ],
+    "events": [
+      {
+        "stage": "started",
+        "at": "2026-10-09T04:59:33.089582+00:00"
+      },
+      {
+        "stage": "retrieval_completed",
+        "at": "2026-10-09T04:59:33.093256+00:00"
+      },
+      {
+        "stage": "waiting_for_model",
+        "at": "2026-10-09T04:59:33.096951+00:00"
+      },
+      {
+        "stage": "generator_started",
+        "at": "2026-10-09T04:59:33.150229+00:00"
+      },
+      {
+        "stage": "generator_completed",
+        "at": "2026-10-09T05:00:13.475747+00:00"
+      },
+      {
+        "stage": "critic_started",
+        "at": "2026-10-09T05:00:13.478561+00:00"
+      },
+      {
+        "stage": "checks_completed",
+        "at": "2026-10-09T05:00:58.047572+00:00"
+      }
+    ],
+    "limitations": [
+      "Local same-model generator and critic may share errors.",
+      "Only requirements are retrieved; examples/guidelines are not indexed.",
+      "Similarity is not probability; human review required.",
+      "Structured timing fields are supplied, not inferred here."
+    ]
+  },
+  {
+    "run_id": "c39cc759840549f8b82067dd74fbebe1",
+    "created_at": "2026-10-09T09:34:31.193884+00:00",
+    "dataset": "synthetic_demo",
+    "model": "qwen3:8b",
+    "test_id": "DEMO-T02",
+    "test_snapshot": {
+      "test_id": "DEMO-T02",
+      "title": "Allowed APN session",
+      "scenario": "allowed_apn",
+      "steps": [
+        "Request an allowed APN using an authorised subscriber."
+      ],
+      "expected_result": "Session is established within 5 seconds.",
+      "expected_event": "session_established",
+      "max_seconds": "5",
+      "source": "synthetic_testcases.json#DEMO-T02"
+    },
+    "requirement_corpus_snapshot": [
+      {
+        "requirement_id": "DEMO-R01",
+        "text": "An attach request using an unknown, correctly formed subscriber identity shall be rejected within 2 seconds.",
+        "scenario": "unknown_subscriber",
+        "test_kind": "negative",
+        "expected_event": "attach_rejected",
+        "max_seconds": "2",
+        "source": "synthetic_requirements.json#DEMO-R01"
+      },
+      {
+        "requirement_id": "DEMO-R02",
+        "text": "An attach request using a malformed subscriber identity shall be rejected within 2 seconds.",
+        "scenario": "malformed_subscriber",
+        "test_kind": "negative",
+        "expected_event": "attach_rejected",
+        "max_seconds": "2",
+        "source": "synthetic_requirements.json#DEMO-R02"
+      },
+      {
+        "requirement_id": "DEMO-R03",
+        "text": "An authorised subscriber requesting an allowed APN shall receive session establishment within 5 seconds.",
+        "scenario": "allowed_apn",
+        "test_kind": "positive",
+        "expected_event": "session_established",
+        "max_seconds": "5",
+        "source": "synthetic_requirements.json#DEMO-R03"
+      },
+      {
+        "requirement_id": "DEMO-R04",
+        "text": "A request for a disallowed APN shall be rejected within 2 seconds.",
+        "scenario": "disallowed_apn",
+        "test_kind": "negative",
+        "expected_event": "session_rejected",
+        "max_seconds": "2",
+        "source": "synthetic_requirements.json#DEMO-R04"
+      }
+    ],
+    "query": "Allowed APN session\nRequest an allowed APN using an authorised subscriber.\nSession is established within 5 seconds.",
+    "top_k": 3,
+    "status": "completed_with_quality_flags",
+    "human_review_status": "pending",
+    "candidates": [
+      {
+        "requirement_id": "DEMO-R03",
+        "requirement_text": "An authorised subscriber requesting an allowed APN shall receive session establishment within 5 seconds.",
+        "source": "synthetic_requirements.json#DEMO-R03",
+        "retrieval_score": 0.765412,
+        "mapping_status": "candidate_only"
+      },
+      {
+        "requirement_id": "DEMO-R04",
+        "requirement_text": "A request for a disallowed APN shall be rejected within 2 seconds.",
+        "source": "synthetic_requirements.json#DEMO-R04",
+        "retrieval_score": 0.330211,
+        "mapping_status": "candidate_only"
+      },
+      {
+        "requirement_id": "DEMO-R02",
+        "requirement_text": "An attach request using a malformed subscriber identity shall be rejected within 2 seconds.",
+        "source": "synthetic_requirements.json#DEMO-R02",
+        "retrieval_score": 0.19614,
+        "mapping_status": "candidate_only"
+      }
+    ],
+    "generator": {
+      "proposal": {
+        "decision": "candidate_link",
+        "requirement_id": "DEMO-R03",
+        "requirement_quote": "An authorised subscriber requesting an allowed APN shall receive session establishment within 5 seconds.",
+        "test_quote": "Session is established within 5 seconds.",
+        "reason": "The test scenario matches the requirement's scenario of an authorised subscriber requesting an allowed APN, with a session establishment time constraint."
+      },
+      "source_check_errors": [],
+      "elapsed_seconds": 31.23,
+      "review_status": "pending"
+    },
+    "critic": {
+      "critic": {
+        "link_assessment": "supported",
+        "reason": "The test scenario and requirement behavior align regarding an authorised subscriber requesting an allowed APN and the session establishment time constraint.",
+        "findings": [
+          {
+            "category": "missing_timing",
+            "requirement_quote": "An authorised subscriber requesting an allowed APN shall receive session establishment within 5 seconds.",
+            "test_quote": "Session is established within 5 seconds.",
+            "explanation": "The requirement specifies a 5-second time limit, but the test expected_result does not explicitly mention the time limit, making the timing criterion ambiguous."
+          }
+        ]
+      },
+      "source_check_errors": [],
+      "elapsed_seconds": 32.66,
+      "input_snapshot": {
+        "requirement": {
+          "requirement_id": "DEMO-R03",
+          "text": "An authorised subscriber requesting an allowed APN shall receive session establishment within 5 seconds."
+        },
+        "test": {
+          "test_id": "DEMO-T02",
+          "title": "Allowed APN session",
+          "steps": [
+            "Request an allowed APN using an authorised subscriber."
+          ],
+          "expected_result": "Session is established within 5 seconds."
+        },
+        "proposal": {
+          "decision": "candidate_link",
+          "requirement_id": "DEMO-R03",
+          "requirement_quote": "An authorised subscriber requesting an allowed APN shall receive session establishment within 5 seconds.",
+          "test_quote": "Session is established within 5 seconds.",
+          "reason": "The test scenario matches the requirement's scenario of an authorised subscriber requesting an allowed APN, with a session establishment time constraint."
+        }
+      },
+      "review_status": "pending"
+    },
+    "timing_check": {
+      "status": "MATCH",
+      "category": null,
+      "requirement_seconds": "5",
+      "test_seconds": "5",
+      "scope": "criteria comparison conditional on proposed link"
+    },
+    "quality_flags": [
+      {
+        "type": "TIMING_CATEGORY_DISAGREEMENT",
+        "detail": "AI: ['missing_timing']; structured: []."
+      }
+    ],
+    "events": [
+      {
+        "stage": "started",
+        "at": "2026-10-09T09:34:31.193949+00:00"
+      },
+      {
+        "stage": "retrieval_completed",
+        "at": "2026-10-09T09:34:31.199603+00:00"
+      },
+      {
+        "stage": "waiting_for_model",
+        "at": "2026-10-09T09:34:31.256936+00:00"
+      },
+      {
+        "stage": "generator_started",
+        "at": "2026-10-09T09:34:31.261435+00:00"
+      },
+      {
+        "stage": "generator_completed",
+        "at": "2026-10-09T09:35:02.502157+00:00"
+      },
+      {
+        "stage": "critic_started",
+        "at": "2026-10-09T09:35:02.505577+00:00"
+      },
+      {
+        "stage": "checks_completed",
+        "at": "2026-10-09T09:35:35.175747+00:00"
+      }
+    ],
+    "limitations": [
+      "Local same-model generator and critic may share errors.",
+      "Only requirements are retrieved; examples/guidelines are not indexed.",
+      "Similarity is not probability; human review required.",
+      "Structured timing fields are supplied, not inferred here."
+    ]
+  },
+  {
+    "run_id": "971eb3cf604e48f1acbf95d5ad6e4abe",
+    "created_at": "2026-10-09T09:39:21.603245+00:00",
+    "dataset": "synthetic_demo",
+    "model": "qwen3:8b",
+    "test_id": "DEMO-T03",
+    "test_snapshot": {
+      "test_id": "DEMO-T03",
+      "title": "Disallowed APN rejection",
+      "scenario": "disallowed_apn",
+      "steps": [
+        "Request a disallowed APN."
+      ],
+      "expected_result": "Session is rejected within 4 seconds.",
+      "expected_event": "session_rejected",
+      "max_seconds": "4",
+      "source": "synthetic_testcases.json#DEMO-T03"
+    },
+    "requirement_corpus_snapshot": [
+      {
+        "requirement_id": "DEMO-R01",
+        "text": "An attach request using an unknown, correctly formed subscriber identity shall be rejected within 2 seconds.",
+        "scenario": "unknown_subscriber",
+        "test_kind": "negative",
+        "expected_event": "attach_rejected",
+        "max_seconds": "2",
+        "source": "synthetic_requirements.json#DEMO-R01"
+      },
+      {
+        "requirement_id": "DEMO-R02",
+        "text": "An attach request using a malformed subscriber identity shall be rejected within 2 seconds.",
+        "scenario": "malformed_subscriber",
+        "test_kind": "negative",
+        "expected_event": "attach_rejected",
+        "max_seconds": "2",
+        "source": "synthetic_requirements.json#DEMO-R02"
+      },
+      {
+        "requirement_id": "DEMO-R03",
+        "text": "An authorised subscriber requesting an allowed APN shall receive session establishment within 5 seconds.",
+        "scenario": "allowed_apn",
+        "test_kind": "positive",
+        "expected_event": "session_established",
+        "max_seconds": "5",
+        "source": "synthetic_requirements.json#DEMO-R03"
+      },
+      {
+        "requirement_id": "DEMO-R04",
+        "text": "A request for a disallowed APN shall be rejected within 2 seconds.",
+        "scenario": "disallowed_apn",
+        "test_kind": "negative",
+        "expected_event": "session_rejected",
+        "max_seconds": "2",
+        "source": "synthetic_requirements.json#DEMO-R04"
+      }
+    ],
+    "query": "Disallowed APN rejection\nRequest a disallowed APN.\nSession is rejected within 4 seconds.",
+    "top_k": 3,
+    "status": "completed",
+    "human_review_status": "pending",
+    "candidates": [
+      {
+        "requirement_id": "DEMO-R04",
+        "requirement_text": "A request for a disallowed APN shall be rejected within 2 seconds.",
+        "source": "synthetic_requirements.json#DEMO-R04",
+        "retrieval_score": 0.842395,
+        "mapping_status": "candidate_only"
+      },
+      {
+        "requirement_id": "DEMO-R03",
+        "requirement_text": "An authorised subscriber requesting an allowed APN shall receive session establishment within 5 seconds.",
+        "source": "synthetic_requirements.json#DEMO-R03",
+        "retrieval_score": 0.335044,
+        "mapping_status": "candidate_only"
+      },
+      {
+        "requirement_id": "DEMO-R02",
+        "requirement_text": "An attach request using a malformed subscriber identity shall be rejected within 2 seconds.",
+        "source": "synthetic_requirements.json#DEMO-R02",
+        "retrieval_score": 0.24433,
+        "mapping_status": "candidate_only"
+      }
+    ],
+    "generator": {
+      "proposal": {
+        "decision": "candidate_link",
+        "requirement_id": "DEMO-R04",
+        "requirement_quote": "A request for a disallowed APN shall be rejected within 2 seconds.",
+        "test_quote": "Session is rejected within 4 seconds.",
+        "reason": "The test scenario matches the requirement for disallowed APN rejection, though timing differs."
+      },
+      "source_check_errors": [],
+      "elapsed_seconds": 20.32,
+      "review_status": "pending"
+    },
+    "critic": {
+      "critic": {
+        "link_assessment": "supported",
+        "reason": "The test scenario aligns with the requirement behavior of rejecting a disallowed APN, though the timing threshold differs.",
+        "findings": [
+          {
+            "category": "wrong_threshold",
+            "requirement_quote": "A request for a disallowed APN shall be rejected within 2 seconds.",
+            "test_quote": "Session is rejected within 4 seconds.",
+            "explanation": "The test expects a rejection within 4 seconds, whereas the requirement specifies a 2-second threshold."
+          }
+        ]
+      },
+      "source_check_errors": [],
+      "elapsed_seconds": 29.8,
+      "input_snapshot": {
+        "requirement": {
+          "requirement_id": "DEMO-R04",
+          "text": "A request for a disallowed APN shall be rejected within 2 seconds."
+        },
+        "test": {
+          "test_id": "DEMO-T03",
+          "title": "Disallowed APN rejection",
+          "steps": [
+            "Request a disallowed APN."
+          ],
+          "expected_result": "Session is rejected within 4 seconds."
+        },
+        "proposal": {
+          "decision": "candidate_link",
+          "requirement_id": "DEMO-R04",
+          "requirement_quote": "A request for a disallowed APN shall be rejected within 2 seconds.",
+          "test_quote": "Session is rejected within 4 seconds.",
+          "reason": "The test scenario matches the requirement for disallowed APN rejection, though timing differs."
+        }
+      },
+      "review_status": "pending"
+    },
+    "timing_check": {
+      "status": "THRESHOLD_MISMATCH",
+      "category": "wrong_threshold",
+      "requirement_seconds": "2",
+      "test_seconds": "4",
+      "scope": "criteria comparison conditional on proposed link"
+    },
+    "quality_flags": [],
+    "events": [
+      {
+        "stage": "started",
+        "at": "2026-10-09T09:39:21.603299+00:00"
+      },
+      {
+        "stage": "retrieval_completed",
+        "at": "2026-10-09T09:39:21.606902+00:00"
+      },
+      {
+        "stage": "waiting_for_model",
+        "at": "2026-10-09T09:39:21.660491+00:00"
+      },
+      {
+        "stage": "generator_started",
+        "at": "2026-10-09T09:39:21.664114+00:00"
+      },
+      {
+        "stage": "generator_completed",
+        "at": "2026-10-09T09:39:42.044223+00:00"
+      },
+      {
+        "stage": "critic_started",
+        "at": "2026-10-09T09:39:42.047725+00:00"
+      },
+      {
+        "stage": "checks_completed",
+        "at": "2026-10-09T09:40:11.853029+00:00"
+      }
+    ],
+    "limitations": [
+      "Local same-model generator and critic may share errors.",
+      "Only requirements are retrieved; examples/guidelines are not indexed.",
+      "Similarity is not probability; human review required.",
+      "Structured timing fields are supplied, not inferred here."
+    ]
+  }
+]
